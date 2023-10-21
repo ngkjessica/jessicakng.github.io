@@ -20,14 +20,14 @@ $mail->SMTPAuth   = TRUE;
 $mail->SMTPSecure = "ssl";
 $mail->Port       = 465;
 $mail->Host       = "smtp.gmail.com";
-$mail->Username   = "eclassroom1999@gmail.com";
-$mail->Password   = "gxptrkpjfvmrqbce";
+$mail->Username   = "soham1255@gmail.com";
+$mail->Password   = "lordshiva9586681231";
 
 
 $success = "";
 $error = "";
 $name = $message = $email = "";
-$errors = array('name' => '', 'email' => '', 'message' => '');
+$errors = array('name' => '', 'email' => '','subject' =>'', 'message' => '');
 
 if (isset($_POST["submit"])) {
     if (empty(trim($_POST["name"]))) {
@@ -45,6 +45,15 @@ if (isset($_POST["submit"])) {
         $email = SanitizeString($_POST["email"]);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors["email"] = "Pls give a proper email address";
+        }
+    }
+
+    if (empty(trim($_POST["subject"]))) {
+        $errors["subject"] = "Please type your message";
+    } else {
+        $message = SanitizeString($_POST["subject"]);
+        if (!preg_match("/^[a-zA-Z\d\s]+$/", $subject)) {
+            $errors["subject"] = "Only letters, spaces and maybe numbers allowed";
         }
     }
 
@@ -538,33 +547,35 @@ function SanitizeString($var)
                 <div class="col-lg-8">
                     <div class="contact-form text-center">
                         <div id="success"></div>
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <form name="sentMessage" id="contactForm" novalidate="novalidate" action="index.php" method="post">
                             <div class="form-row">
                                 <div class="control-group col-sm-6">
                                     <input type="text" class="form-control p-4" id="name" placeholder="Your Name"
-                                        required="required" data-validation-required-message="Please enter your name" />
+                                        required="required" data-validation-required-message="Please enter your name" value="<?php echo htmlspecialchars($name) ?>" />
                                     <p class="help-block text-danger"></p>
+                                    <div class="error"><?php echo $errors["name"] ?></div>
                                 </div>
                                 <div class="control-group col-sm-6">
-                                    <input type="email" class="form-control p-4" id="email" placeholder="Your Email"
-                                        required="required" data-validation-required-message="Please enter your email" />
+                                    <input name="email" type="email" class="form-control p-4" id="email" placeholder="Your Email"
+                                        required="required" data-validation-required-message="Please enter your email" value="<?php echo htmlspecialchars($email) ?>" />
                                     <p class="help-block text-danger"></p>
+                                    <div class="error"><?php echo $errors["email"] ?></div>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <input type="text" class="form-control p-4" id="subject" placeholder="Subject"
-                                    required="required" data-validation-required-message="Please enter a subject" />
+                                <input name="subject" type="text" class="form-control p-4" id="subject" placeholder="Subject"
+                                    required="required" data-validation-required-message="Please enter a subject" value="<?php echo htmlspecialchars($subject) ?>/>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
                                 <textarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Message"
                                     required="required"
-                                    data-validation-required-message="Please enter your message"></textarea>
+                                    data-validation-required-message="Please enter your message"><?php echo htmlspecialchars($message) ?></textarea>
                                 <p class="help-block text-danger"></p>
+                                <div class="error"><?php echo $errors["message"] ?></div>
                             </div>
                             <div>
-                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Send
-                                    Message</button>
+                                <input type="submit" class="btn btn-outline-primary z-depth-0" name="submit" id="sendMessageButton" value="Send Message"></input>
                             </div>
                         </form>
                     </div>
