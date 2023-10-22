@@ -9988,3 +9988,8 @@ h6,
   padding: 3px;
   border:1px solid green;
 }
+.my-form-status.error{
+  border:1px solid red;
+  color:red;
+  padding:3px;
+}
