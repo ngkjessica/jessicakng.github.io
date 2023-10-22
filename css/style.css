@@ -9982,7 +9982,7 @@ h6,
   padding: 0;
   list-style-type: none;
 }
-#my-form-status:empty{
+#my-form-status:not(:empty){
   margin-top: 18px;
   color: green;
   padding: 3px;
