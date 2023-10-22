@@ -9982,3 +9982,9 @@ h6,
   padding: 0;
   list-style-type: none;
 }
+#my-form-status:empty{
+  margin-top: 18px;
+  color: green;
+  padding: 3px;
+  border:1px solid green;
+}
