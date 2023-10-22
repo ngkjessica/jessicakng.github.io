@@ -9989,7 +9989,7 @@ h6,
   border:1px solid green;
 }
 .my-form-status.error{
-  border:1px solid red;
-  color:red;
+  border:1px solid red !important;
+  color:red !important;
   padding:3px;
 }
