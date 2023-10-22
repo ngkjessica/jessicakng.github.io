@@ -513,6 +513,7 @@
               status.innerHTML = "Thanks for your submission!";
               form.reset()
             } else {
+                jQuery('#my-form-status').addClass('error');
               response.json().then(data => {
                 if (Object.hasOwn(data, 'errors')) {
                   status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
