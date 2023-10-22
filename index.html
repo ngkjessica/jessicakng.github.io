@@ -510,6 +510,7 @@
             }
           }).then(response => {
             if (response.ok) {
+                jQuery('#my-form-status').addClass('success');
               status.innerHTML = "Thanks for your submission!";
               form.reset()
             } else {
