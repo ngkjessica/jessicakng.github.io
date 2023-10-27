@@ -10007,7 +10007,7 @@ h6,
 }
 @media(max-width:400px){
   .display-1-recommendations{
-    font-size:2em;
+    font-size:2em !important;
   }
   .display-1{
     font-size:3.5em;
