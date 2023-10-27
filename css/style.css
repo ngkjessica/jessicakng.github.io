@@ -9994,3 +9994,8 @@ h6,
   padding:3px;
   margin-top:20px;
 }
+@media(max-width:767px){
+  .n_education{
+  bottom:0 !important;
+}
+}
